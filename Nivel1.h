@@ -6,7 +6,7 @@
 
 class Nivel1 : public Nivel{
     public:
-        Nivel1(sf::RenderWindow& vent);
+        Nivel1(sf::RenderWindow& vent,Jugador& jug);
         void manejarEntrada();
         void actualizar();
         void dibujar();

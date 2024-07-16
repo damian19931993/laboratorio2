@@ -13,6 +13,7 @@ class PantallaGameOver{
         sf::RenderWindow& ventana;
         sf::Texture fondoTexture;
         sf::Sprite fondoSprite;
+        bool irAmenu=false;
 
     public:
         PantallaGameOver(sf::RenderWindow& vent);
@@ -20,7 +21,16 @@ class PantallaGameOver{
             puntos = p;
             textoPuntos.setString("Puntos: " + std::to_string(puntos));
         }
+
+        bool isIrAmenu(){
+            return irAmenu;
+        }
+
         void dibujar();
+        void manejarEntrada();
+        void resetIrAmenu(){
+            irAmenu=false;
+        }
 
 };
 #endif

@@ -4,7 +4,8 @@
 #include<iostream>
 #include <string.h>
 using namespace std;
-Jugador::Jugador(float xx, float yy) : x(xx), y(yy), gameOver(false), vidas(3), trampaActiva(false), animacionTrampa(false), alturaActualTrampa(0), puntos(0) {
+Jugador::Jugador(float xx, float yy) : x(xx), y(yy), gameOver(false), trampaActiva(false), animacionTrampa(false), alturaActualTrampa(0), puntos(0) {
+    vidas=1;
     forma.setRadius(20); // Establecer el radio del círculo
     forma.setFillColor(sf::Color::Green); // Establecer el color de relleno
     forma.setPosition(x, y); // Establecer la posición inicial
@@ -97,15 +98,11 @@ if (cayendo) {
             animacionTrampa=false;
             cayendo = false;
             vidas--;
-            setearJugador();
+            setearJugador(0,400);
             velocidadCaida=0.01;
 
         }
     }
-if(vidas==0){
-    gameOver=true;
-}
-
 
 
 
@@ -123,10 +120,11 @@ bool Jugador::seChocan(Obstaculo obstaculo, PuertaBlanca puerta) { //REHHACER
         trampaActiva=false;
         animacionTrampa=false;
         vidas--;
-        setearJugador();
+        setearJugador(0,400);
     }
     if(colision2){
-        setearJugador();
+         siguienteNivel=true;
+        setearJugador(350,100);
     }
     return colision;
 }
@@ -148,9 +146,10 @@ void Jugador::caer() {
     }
 }
 
-void Jugador::setearJugador() {
+void Jugador::setearJugador(float a, float b) {
 
-    forma.setPosition(0, 400);  //HACELO DINAMICO ASI SRVE PARA TODAS LAS CLASES
+
+    forma.setPosition(a, b);  //HACELO DINAMICO ASI SRVE PARA TODAS LAS CLASES
 
 }
 
@@ -178,16 +177,8 @@ void Jugador::actualizarTrampa() {
     }
 }
 
-
-
-/*bool Jugador::seChocaPuerta(PuertaBlanca puerta) {
-    bool colision = forma.getGlobalBounds().intersects(puerta.getBounds());
-    if(colision){
-        forma.setPosition(0,400);
-        vidas--;
-
-    }
-    return colision;
+void Jugador::setVidas(int v) {
+    vidas = v;
 }
-*/
+
 

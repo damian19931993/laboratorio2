@@ -25,6 +25,8 @@ private:
     bool cayendo;
     bool saltando;
     bool jugadorCayo=false;
+    bool siguienteNivel=false;
+    bool habilitarGameOver=true;
     float velocidadSalto;
     float velocidadSaltoHorizontal;
     float velocidadMovimiento;
@@ -60,6 +62,26 @@ public:
     void setVelocidadSaltoHorizontal(float vsh) { velocidadSaltoHorizontal = vsh; }
     void setVelocidadMovimiento(float vm) { velocidadMovimiento = vm; }
     void setVelocidadCaida(float vc) { velocidadCaida = vc; }
+    void setGameOver(bool go){
+        gameOver=go;
+    }
+    void setVidas(int v);
+
+    void setPuntos(int p){
+        puntos=p;
+    }
+
+    void setSiguienteNivel(bool s){
+        siguienteNivel=s;
+    }
+
+    void setTrampaActiva(bool t){
+        trampaActiva=t;
+    }
+
+    void setAnimacionTrampa(bool a){
+        animacionTrampa = a;
+    }
 
 
 
@@ -85,7 +107,7 @@ public:
     float getVelocidadSaltoHorizontal() const { return velocidadSaltoHorizontal; }
     float getVelocidadMovimiento() const { return velocidadMovimiento; }
     float getVelocidadCaida() const { return velocidadCaida; }
-    float getVidas() const {
+    int getVidas()  {
         return vidas;
     }
     bool isJugadorCayo() const {
@@ -100,13 +122,18 @@ public:
         return puntos;
     }
 
+    bool isSiguienteNivel(){
+        return siguienteNivel;
+    }
+
     void dibujar(sf::RenderWindow& ventana);
     void cmd();
+    void manejarVidas();
     bool seChocan(Obstaculo obstaculo, PuertaBlanca puerta);
     bool seChocaPuerta(PuertaBlanca puerta);
     bool seChocaConMoneda(Moneda& moneda);
     void caer();
-    void setearJugador();
+    void setearJugador(float a, float b);
     void dibujarTrampa(sf::RenderWindow& ventana);
 };
 

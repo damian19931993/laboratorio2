@@ -13,7 +13,14 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="SFML/include" />
 				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+					<Add directory="SFML/lib" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Juego" prefix_auto="1" extension_auto="1" />
@@ -52,10 +59,16 @@
 		<Unit filename="Nivel.h" />
 		<Unit filename="Nivel1.cpp" />
 		<Unit filename="Nivel1.h" />
+		<Unit filename="Nivel2.cpp" />
+		<Unit filename="Nivel2.h" />
 		<Unit filename="Obstaculo.cpp" />
 		<Unit filename="Obstaculo.h" />
 		<Unit filename="PantallaGameOver.cpp" />
 		<Unit filename="PantallaGameOver.h" />
+		<Unit filename="PantallaPasarNivel.cpp" />
+		<Unit filename="PantallaPasarNivel.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Piso.cpp" />
 		<Unit filename="Piso.h" />
 		<Unit filename="PuertaBlanca.cpp" />

@@ -1,11 +1,12 @@
 #include "Nivel1.h"
 
-Nivel1::Nivel1(sf::RenderWindow& vent): Nivel(vent,2,3){
-    obstaculos[0] = Obstaculo(150, 300, 450); // Inicializar el primer obstáculo
-    obstaculos[1] = Obstaculo(150, 500, 450); // Inicializar el segundo obstáculo
-    monedas[0]= Moneda(200, 400);
-    monedas[1]= Moneda(350, 400);
-    monedas[2]= Moneda(450, 400);
+Nivel1::Nivel1(sf::RenderWindow& vent,Jugador& jug): Nivel(vent,jug,2,3){
+    //obstaculos[0] = Obstaculo(150, 300, 450); // Inicializar el primer obstáculo
+    //obstaculos[1] = Obstaculo(150, 500, 450); // Inicializar el segundo obstáculo
+    // Posiciones de las monedas para este nivel
+    //int posicionesX[] = { 200, 350, 450 };
+    //int posicionesY[] = { 400, 400, 400 };
+    //setMonedas(posicionesX, posicionesY, 3);
 }
 
 void Nivel1::dibujar(){

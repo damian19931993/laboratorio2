@@ -31,3 +31,17 @@ void PantallaGameOver::dibujar() {
     ventana.draw(textoPuntos);
     ventana.display();
 }
+
+void PantallaGameOver::manejarEntrada(){
+ sf::Event evento;
+    while (ventana.pollEvent(evento)) {
+        if (evento.type == sf::Event::Closed)
+            ventana.close();
+        if (evento.type == sf::Event::TextEntered) {
+             if (evento.text.unicode == '\r') {
+                irAmenu=true;
+            }
+        }
+    }
+}
+

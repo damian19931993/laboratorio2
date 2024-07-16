@@ -7,7 +7,7 @@
 #include <sstream> // Incluye la biblioteca para usar std::ostringstream
 using namespace std;
 
-Nivel::Nivel(sf::RenderWindow& vent, int numObst, int numMon) : ventana(vent), jugador(0, 400),  piso(800, 150), numObstaculos(numObst), puerta(730,350,40,100), numMonedas(numMon)  {
+Nivel::Nivel(sf::RenderWindow& vent,Jugador& jug, int numObst, int numMon) : ventana(vent), jugador(jug),  piso(800, 150), numObstaculos(numObst), puerta(730,350,40,100), numMonedas(numMon)  {
     if (!fuente.loadFromFile("fuentes/Roboto-Black.ttf")) {
         std::cerr << "Error al cargar la fuente" << std::endl;
     }
@@ -84,6 +84,7 @@ void Nivel::dibujar() {
 
 
 
+
     std::ostringstream ss;                  //REHAAACERR
     ss << "VIDAS: " << jugador.getVidas();
     textoVidas.setString(ss.str());
@@ -110,4 +111,12 @@ void Nivel::eventos() {
         }
     }
 }
+
+void Nivel::setMonedas(const int posicionesX[], const int posicionesY[], int numMonedas) {
+    for (int i = 0; i < numMonedas; ++i) {
+        monedas[i] = Moneda(posicionesX[i], posicionesY[i]); // Reiniciar las posiciones de las monedas
+    }
+}
+
+
 

@@ -11,7 +11,7 @@
 class Nivel {
 protected:
     sf::RenderWindow& ventana;
-    Jugador jugador;
+    Jugador& jugador;
     sf::Text textoVidas;
     sf::Text textoPuntos;
     sf::Text textoGameOver;
@@ -28,16 +28,17 @@ protected:
     bool gameOverResolved;
 
 public:
-    Nivel(sf::RenderWindow& vent, int numObst, int numMonedas);
+    Nivel(sf::RenderWindow& vent,Jugador& jug, int numObst, int numMonedas);
     ~Nivel();
 
-    Jugador getJugador(){
+    Jugador& getJugador(){
         return jugador;
     }
     void manejarEntrada();
     void actualizar();
     void dibujar();
     void eventos();
+    void setMonedas(const int posicionesX[], const int posicionesY[], int numMonedas);
 };
 
-#endif // NIVEL1_H_INCLUDED
+#endif
