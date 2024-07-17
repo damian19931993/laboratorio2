@@ -5,7 +5,7 @@
 #include <string.h>
 using namespace std;
 Jugador::Jugador(float xx, float yy) : x(xx), y(yy), gameOver(false), trampaActiva(false), animacionTrampa(false), alturaActualTrampa(0), puntos(0) {
-    vidas=1;
+    vidas=10;
     forma.setRadius(20); // Establecer el radio del círculo
     forma.setFillColor(sf::Color::Green); // Establecer el color de relleno
     forma.setPosition(x, y); // Establecer la posición inicial
@@ -24,14 +24,14 @@ Jugador::Jugador(float xx, float yy) : x(xx), y(yy), gameOver(false), trampaActi
     // Inicializar la trampa con tamaño 0
     trampa.setSize(sf::Vector2f(50, 0));
     trampa.setFillColor(sf::Color::White); // Establecer el color de la trampa
-    trampa.setPosition(575, 450); // Posición inicial de la trampa
+     // Posición inicial de la trampa
 
 }
 
 
 
 void Jugador::dibujarTrampa(sf::RenderWindow& ventana){
-    trampa.setPosition(575,450);
+
     if(trampaActiva){
         ventana.draw(trampa);
     }
@@ -124,7 +124,6 @@ bool Jugador::seChocan(Obstaculo obstaculo, PuertaBlanca puerta) { //REHHACER
     }
     if(colision2){
          siguienteNivel=true;
-        setearJugador(350,100);
     }
     return colision;
 }
@@ -139,9 +138,18 @@ bool Jugador::seChocaConMoneda(Moneda& moneda){
     return colision;
 }
 
+bool Jugador::seChocaConFuego(Fuego& fuego){
+    bool colision = forma.getGlobalBounds().intersects(fuego.getBounds());
+    if(colision){
+        fuego.desaparecer();
+        vidas--;
+        setearJugador(0,400);
+    }
+    return colision;
+}
 
-void Jugador::caer() {
-      if (forma.getPosition().x > 580 && forma.getPosition().x < 600 && forma.getPosition().y == 400) {
+void Jugador::caer(float posX, float posY) {
+      if (forma.getPosition().x > posX && forma.getPosition().x < (posX + 20) && forma.getPosition().y == posY) {
         cayendo = true;
     }
 }
@@ -153,12 +161,13 @@ void Jugador::setearJugador(float a, float b) {
 
 }
 
-void Jugador::activarTrampa() {
-    if (x>400 && !trampaActiva) {
+void Jugador::activarTrampa(float n, float posicionX) {
+    if (x>n && !trampaActiva) {
         if (!animacionTrampa) {
             trampaActiva = true;
             animacionTrampa = true;
             alturaActualTrampa = 0;
+            trampa.setPosition(posicionX, 450);
             trampa.setSize(sf::Vector2f(50, alturaActualTrampa)); // Inicializar el tamaño de la trampa a 0
 
         }

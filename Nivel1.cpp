@@ -1,6 +1,6 @@
 #include "Nivel1.h"
 
-Nivel1::Nivel1(sf::RenderWindow& vent,Jugador& jug): Nivel(vent,jug,2,3){
+Nivel1::Nivel1(sf::RenderWindow& vent,Jugador& jug): Nivel(vent,jug,2,3,0){
     //obstaculos[0] = Obstaculo(150, 300, 450); // Inicializar el primer obstáculo
     //obstaculos[1] = Obstaculo(150, 500, 450); // Inicializar el segundo obstáculo
     // Posiciones de las monedas para este nivel

@@ -8,6 +8,7 @@
 #include "Piso.h"
 #include "PuertaBlanca.h"
 #include "Moneda.h"
+#include "Fuego.h"
 
 class Piso;
 
@@ -34,6 +35,8 @@ private:
     bool gameOver;
     int vidas;
     int puntos;
+    int nivel;
+
 
     sf::RectangleShape trampa;
     bool trampaActiva;
@@ -83,12 +86,17 @@ public:
         animacionTrampa = a;
     }
 
+    void setNivel(int n){
+        nivel=n;
+    }
+
+
 
 
     sf::CircleShape getForma() const { return forma; }
 
     sf::RectangleShape& getForma();
-    void activarTrampa();
+    void activarTrampa(float n,float posicionX);
     void actualizarTrampa(); // Método para actualizar la animación de la trampa
     bool isTrampaActiva();
 
@@ -126,13 +134,18 @@ public:
         return siguienteNivel;
     }
 
+    int getNivel(){
+        return nivel;
+    }
+    bool seChocaConFuego(Fuego& fuego);
+
     void dibujar(sf::RenderWindow& ventana);
     void cmd();
     void manejarVidas();
     bool seChocan(Obstaculo obstaculo, PuertaBlanca puerta);
     bool seChocaPuerta(PuertaBlanca puerta);
     bool seChocaConMoneda(Moneda& moneda);
-    void caer();
+    void caer(float posX, float posY);
     void setearJugador(float a, float b);
     void dibujarTrampa(sf::RenderWindow& ventana);
 };

@@ -3,10 +3,13 @@
 #include "DarNombreJugador.h"
 #include "Nivel1.h"
 #include "Nivel2.h"
+#include "Nivel3.h"
+#include "Nivel4.h"
 #include "Nivel.h"
 #include "Jugador.h"
 #include "PantallaGameOver.h"
 #include "PantallaPasarNivel.h"
+#include "PantallaFinal.h"
 #include<iostream>
 #include <string.h>
 using namespace std;
@@ -21,16 +24,23 @@ int main() {
     DarNombreJugador darNombreJugador(ventana);
     Nivel1 nivel1(ventana,jugador);
     Nivel2 nivel2(ventana,jugador);
+    Nivel3 nivel3(ventana,jugador);
+    Nivel4 nivel4(ventana,jugador);
     PantallaGameOver pantallaGameOver(ventana);
     PantallaPasarNivel pantallaPasarNivel(ventana);
+    PantallaFinal pantallaFinal(ventana);
 
     bool enMenuPrincipal=true;
     bool enDarNombreJugador=false;
     bool habilitarNivel1=false;
     bool habilitarNivel2=false;
+    bool habilitarNivel3=false;
+    bool habilitarNivel4=false;
+    bool habilitarPantallaFinal=false;
     bool gameOver=false;
     bool habilitarSiguienteNivel=false;
     bool jugarProximoNivel=false;
+    bool hayJuego=true;
 
 
 
@@ -56,13 +66,14 @@ int main() {
                 habilitarNivel1=true;
                 enDarNombreJugador=false;
                 darNombreJugador.resetNombreIngresado();
-                jugador.setVidas(2);
+                jugador.setVidas(10);
+                jugador.setPuntos(0);
 
             }
         }
 
         if(habilitarNivel1 && !gameOver){
-
+            jugador.setNivel(1);
             nivel1.manejarEntrada();
             nivel1.dibujar();
             nivel1.eventos();
@@ -70,33 +81,82 @@ int main() {
 
 
 
-        if(jugador.isSiguienteNivel()){
-            habilitarSiguienteNivel=true;
+        if(jugador.isSiguienteNivel() && hayJuego){
             jugador.setTrampaActiva(false);
             jugador.setAnimacionTrampa(false);
-        }
-
-        if(habilitarSiguienteNivel){
             habilitarNivel1=false;
-            pantallaPasarNivel.dibujar();
-            pantallaPasarNivel.manejarEntrada();
-            if(pantallaPasarNivel.isJugarProximoNivel()){
+            if(jugador.getNivel()!=4){
+                pantallaPasarNivel.dibujar();
+                pantallaPasarNivel.manejarEntrada();
+             if(pantallaPasarNivel.isJugarProximoNivel() && jugador.getNivel()==1){
+                jugador.setearJugador(250,100);
                 habilitarNivel2=true;
                 pantallaPasarNivel.reset();
-                habilitarSiguienteNivel=false;
                 jugador.setSiguienteNivel(false);
+            }
+            if(pantallaPasarNivel.isJugarProximoNivel() && jugador.getNivel()==2){
+                jugador.setearJugador(0,400);
+                habilitarNivel3=true;
+                pantallaPasarNivel.reset();
+                jugador.setSiguienteNivel(false);
+            }
+            if(pantallaPasarNivel.isJugarProximoNivel() && jugador.getNivel()==3){
+                jugador.setearJugador(0,400);
+                habilitarNivel4=true;
+                pantallaPasarNivel.reset();
+                jugador.setSiguienteNivel(false);
+            }
+            }
+
+
+            if(jugador.getNivel()==4){
+                jugador.setearJugador(0,400);
+                habilitarPantallaFinal=true;
+                pantallaPasarNivel.reset();
+                jugador.setSiguienteNivel(false);
+                jugador.setNivel(1);
             }
         }
 
-
         if(habilitarNivel2 & !gameOver){
-
+            jugador.setNivel(2);
             nivel2.manejarEntrada();
             nivel2.dibujar();
             nivel2.eventos();
-            nivel2.dibujarRectangulo();
+            if(jugador.isSiguienteNivel()){
+                habilitarNivel2=false;
+            }
         }
 
+        if(habilitarNivel3 & !gameOver){
+            jugador.setNivel(3);
+            nivel3.manejarEntrada();
+            nivel3.dibujar();
+            nivel3.eventos();
+            if(jugador.isSiguienteNivel()){
+                habilitarNivel3=false;
+            }
+        }
+
+        if(habilitarNivel4 & !gameOver){
+            jugador.setNivel(4);
+            nivel4.manejarEntrada();
+            nivel4.dibujar();
+            nivel4.eventos();
+            if(jugador.isSiguienteNivel()){
+                habilitarNivel4=false;
+            }
+        }
+
+        if(habilitarPantallaFinal){
+            pantallaFinal.dibujar();
+            pantallaFinal.manejarEntrada();
+            if(pantallaFinal.esIrMenu()){
+                enMenuPrincipal=true;
+                pantallaFinal.reset();
+                habilitarPantallaFinal=false;
+            }
+        }
 
 
         if(jugador.getVidas()==0){
@@ -106,6 +166,9 @@ int main() {
 
         if (gameOver){
             habilitarNivel1 = false;
+            habilitarNivel2 = false;
+            habilitarNivel3 = false;
+            habilitarNivel4 = false;
             pantallaGameOver.setPuntos(jugador.getPuntos());
             pantallaGameOver.dibujar();
             pantallaGameOver.manejarEntrada();
@@ -118,10 +181,13 @@ int main() {
                 jugador.setPuntos(0);
                 gameOver=false;
                 pantallaGameOver.resetIrAmenu();
-                int posicionesX[] = { 200, 350, 450 };
-                int posicionesY[] = { 400, 400, 400 };
+                int posicionesX1[] = { 200, 350, 450 };
+                int posicionesY1[] = { 400, 400, 400 };
+                int posicionesX2[] = { 200, 350};
+                int posicionesY2[] = { 400, 400};
 
-                nivel1.setMonedas(posicionesX, posicionesY, 3);//estudia el metodo
+                nivel1.setMonedas(posicionesX1, posicionesY1, 3);
+                nivel2.setMonedas(posicionesX2, posicionesY2, 2);//estudia el metodo
             }
         }
 

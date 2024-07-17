@@ -940,14 +940,14 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1721143409 source:c:\projects\laboratorio2\jugador.cpp
+1721182158 source:c:\projects\laboratorio2\jugador.cpp
 	"Jugador.h"
 	"Obstaculo.h"
 	"PuertaBlanca.h"
 	<iostream>
 	<string.h>
 
-1721143215 c:\projects\laboratorio2\jugador.h
+1721178672 c:\projects\laboratorio2\jugador.h
 	<SFML/Graphics.hpp>
 	<string>
 	<cstring>
@@ -955,6 +955,7 @@
 	"Piso.h"
 	"PuertaBlanca.h"
 	"Moneda.h"
+	"Fuego.h"
 
 1721061260 c:\projects\laboratorio2\obstaculo.h
 	<SFML/Graphics.hpp>
@@ -969,16 +970,19 @@
 1721061260 c:\projects\laboratorio2\moneda.h
 	<SFML/Graphics.hpp>
 
-1721143843 source:c:\projects\laboratorio2\main.cpp
+1721186377 source:c:\projects\laboratorio2\main.cpp
 	<SFML/Graphics.hpp>
 	"MenuPrincipal.h"
 	"DarNombreJugador.h"
 	"Nivel1.h"
 	"Nivel2.h"
+	"Nivel3.h"
+	"Nivel4.h"
 	"Nivel.h"
 	"Jugador.h"
 	"PantallaGameOver.h"
 	"PantallaPasarNivel.h"
+	"PantallaFinal.h"
 	<iostream>
 	<string.h>
 
@@ -991,13 +995,14 @@
 	"Nivel.h"
 	"Jugador.h"
 
-1721100539 c:\projects\laboratorio2\nivel.h
+1721180319 c:\projects\laboratorio2\nivel.h
 	<SFML/Graphics.hpp>
 	"Jugador.h"
 	"Piso.h"
 	"Obstaculo.h"
 	"PuertaBlanca.h"
 	"Moneda.h"
+	"Fuego.h"
 
 1721089273 c:\projects\laboratorio2\pantallagameover.h
 	<iostream>
@@ -1011,7 +1016,7 @@
 	<iostream>
 	<string.h>
 
-1721100568 source:c:\projects\laboratorio2\nivel.cpp
+1721182089 source:c:\projects\laboratorio2\nivel.cpp
 	"Nivel.h"
 	"Obstaculo.h"
 	"Moneda.h"
@@ -1019,7 +1024,7 @@
 	<string.h>
 	<sstream>
 
-1721143326 source:c:\projects\laboratorio2\nivel1.cpp
+1721176732 source:c:\projects\laboratorio2\nivel1.cpp
 	"Nivel1.h"
 
 1721061260 source:c:\projects\laboratorio2\obstaculo.cpp
@@ -1049,11 +1054,49 @@
 1721101654 c:\projects\laboratorio2\pantallapasarnivel.h
 	<SFML/Graphics.hpp>
 
-1721144120 source:c:\projects\laboratorio2\nivel2.cpp
+1721176741 source:c:\projects\laboratorio2\nivel2.cpp
 	"Nivel2.h"
+	<iostream>
+	<string.h>
 
-1721143560 c:\projects\laboratorio2\nivel2.h
+1721170778 c:\projects\laboratorio2\nivel2.h
 	<SFML/Graphics.hpp>
 	"Nivel.h"
 	"Jugador.h"
+
+1721181525 source:c:\projects\laboratorio2\nivel3.cpp
+	"Nivel3.h"
+	<iostream>
+	<string.h>
+
+1721175986 c:\projects\laboratorio2\nivel3.h
+	<SFML/Graphics.hpp>
+	"Nivel.h"
+	"Jugador.h"
+
+1721179851 c:\projects\laboratorio2\fuego.h
+	<SFML/Graphics.hpp>
+
+1721179526 source:c:\projects\laboratorio2\fuego.cpp
+	"Fuego.h"
+	<iostream>
+	<string.h>
+
+1721181580 source:c:\projects\laboratorio2\nivel4.cpp
+	"Nivel4.h"
+	<iostream>
+	<string.h>
+
+1721181164 c:\projects\laboratorio2\nivel4.h
+	<SFML/Graphics.hpp>
+	"Nivel.h"
+	"Jugador.h"
+
+1721182890 source:c:\projects\laboratorio2\pantallafinal.cpp
+	"PantallaFinal.h"
+	<iostream>
+	<string.h>
+
+1721182765 c:\projects\laboratorio2\pantallafinal.h
+	<SFML/Graphics.hpp>
 

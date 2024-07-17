@@ -49,6 +49,7 @@
 		<Unit filename="DarNombreJugador.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="Fuego.h" />
 		<Unit filename="Jugador.cpp" />
 		<Unit filename="Jugador.h" />
 		<Unit filename="MenuPrincipal.cpp" />
@@ -61,6 +62,8 @@
 		<Unit filename="Nivel1.h" />
 		<Unit filename="Nivel2.cpp" />
 		<Unit filename="Nivel2.h" />
+		<Unit filename="Nivel3.cpp" />
+		<Unit filename="Nivel3.h" />
 		<Unit filename="Obstaculo.cpp" />
 		<Unit filename="Obstaculo.h" />
 		<Unit filename="PantallaGameOver.cpp" />

@@ -7,7 +7,7 @@
 #include <sstream> // Incluye la biblioteca para usar std::ostringstream
 using namespace std;
 
-Nivel::Nivel(sf::RenderWindow& vent,Jugador& jug, int numObst, int numMon) : ventana(vent), jugador(jug),  piso(800, 150), numObstaculos(numObst), puerta(730,350,40,100), numMonedas(numMon)  {
+Nivel::Nivel(sf::RenderWindow& vent,Jugador& jug, int numObst, int numMon, int numFue) : ventana(vent), jugador(jug),  piso(800, 150), numObstaculos(numObst), puerta(730,350,40,100), numMonedas(numMon), numFuegos(numFue)  {
     if (!fuente.loadFromFile("fuentes/Roboto-Black.ttf")) {
         std::cerr << "Error al cargar la fuente" << std::endl;
     }
@@ -15,6 +15,7 @@ Nivel::Nivel(sf::RenderWindow& vent,Jugador& jug, int numObst, int numMon) : ven
     if (!fondoTexture.loadFromFile("fondo2.jpg")) {
         std::cerr << "Error al cargar la imagen de fondo" << std::endl;
     }
+
 
 
     fondoSprite.setTexture(fondoTexture);
@@ -38,11 +39,18 @@ Nivel::Nivel(sf::RenderWindow& vent,Jugador& jug, int numObst, int numMon) : ven
 
     obstaculos = new Obstaculo[numObstaculos];
     monedas = new Moneda[numMonedas];
+    fuegos = new Fuego[numFuegos];
+
+    rectangulo.setSize(sf::Vector2f(100, 10));
+    rectangulo.setFillColor(sf::Color::Yellow);
+    rectangulo.setPosition(250,140);
+
 }
 
 Nivel::~Nivel() {
     delete[] obstaculos; // Liberar la memoria del array de obstáculos
     delete[] monedas;
+    delete[] fuegos;
 }
 
 void Nivel::manejarEntrada() {
@@ -75,12 +83,33 @@ void Nivel::dibujar() {
     }
 
 
+    if(jugador.getNivel()==1){
+      jugador.activarTrampa(400,575);  //(X MAYOR A..., LA TRAMPA SE DINUJA ACA)
+      jugador.dibujarTrampa(ventana);
+      jugador.actualizarTrampa();
+      jugador.caer(580,400); //(POS X DONDE EMPIEZA A CAER)
+    }
 
-    jugador.activarTrampa();
-    jugador.dibujarTrampa(ventana);
-    jugador.actualizarTrampa();
-    jugador.caer();
+    if(jugador.getNivel()==2){
+        jugador.activarTrampa(200,350);
+        jugador.dibujarTrampa(ventana);
+        jugador.actualizarTrampa();
+        jugador.caer(355,400);
+    }
+
+
+        for(int i=0; i<numFuegos; i++){
+            fuegos[i].dibujar(ventana);
+            fuegos[i].mover();
+        }
+
+
+
     jugador.dibujar(ventana);
+
+    if(jugador.getNivel()==2){
+        ventana.draw(rectangulo);
+    }
 
 
 
@@ -93,21 +122,28 @@ void Nivel::dibujar() {
     s << "PUNTOS: " << jugador.getPuntos();
     textoPuntos.setString(s.str());
 
-
-
-
     ventana.display();
 }
 
 void Nivel::eventos() {
     for (int i = 0; i < numObstaculos; ++i) {
         if (jugador.seChocan(obstaculos[i], puerta)) {
+
         }
     }
 
     for(int i=0; i< numMonedas; i++){
         if(jugador.seChocaConMoneda(monedas[i])){
 
+
+        }
+    }
+
+    for(int i=0; i<numFuegos; i++){
+            int a=0;
+        if(jugador.seChocaConFuego(fuegos[i])){
+            fuegos[0]=Fuego(600 + a,375);
+            a=a+400;
         }
     }
 }
@@ -117,6 +153,7 @@ void Nivel::setMonedas(const int posicionesX[], const int posicionesY[], int num
         monedas[i] = Moneda(posicionesX[i], posicionesY[i]); // Reiniciar las posiciones de las monedas
     }
 }
+
 
 
 
