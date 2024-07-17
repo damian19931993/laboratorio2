@@ -10,6 +10,7 @@
 #include "PantallaGameOver.h"
 #include "PantallaPasarNivel.h"
 #include "PantallaFinal.h"
+#include "Archivo.h"
 #include<iostream>
 #include <string.h>
 using namespace std;
@@ -29,6 +30,7 @@ int main() {
     PantallaGameOver pantallaGameOver(ventana);
     PantallaPasarNivel pantallaPasarNivel(ventana);
     PantallaFinal pantallaFinal(ventana);
+    Archivo archivo;
 
     bool enMenuPrincipal=true;
     bool enDarNombreJugador=false;
@@ -165,6 +167,7 @@ int main() {
 
 
         if (gameOver){
+            archivo.cargarJugador(jugador);
             habilitarNivel1 = false;
             habilitarNivel2 = false;
             habilitarNivel3 = false;

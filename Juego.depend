@@ -970,7 +970,7 @@
 1721061260 c:\projects\laboratorio2\moneda.h
 	<SFML/Graphics.hpp>
 
-1721186377 source:c:\projects\laboratorio2\main.cpp
+1721233234 source:c:\projects\laboratorio2\main.cpp
 	<SFML/Graphics.hpp>
 	"MenuPrincipal.h"
 	"DarNombreJugador.h"
@@ -983,6 +983,7 @@
 	"PantallaGameOver.h"
 	"PantallaPasarNivel.h"
 	"PantallaFinal.h"
+	"Archivo.h"
 	<iostream>
 	<string.h>
 
@@ -1099,4 +1100,14 @@
 
 1721182765 c:\projects\laboratorio2\pantallafinal.h
 	<SFML/Graphics.hpp>
+
+1721233120 source:c:\projects\laboratorio2\archivo.cpp
+	"Archivo.h"
+	<iostream>
+
+1721236582 c:\projects\laboratorio2\archivo.h
+	"Jugador.h"
+	<SFML/Graphics.hpp>
+	<string>
+	<cstring>
 
