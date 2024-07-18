@@ -1,11 +1,20 @@
 # depslib dependency file v1.0
-1720885844 source:c:\projects\juego\main.cpp
+1721266133 source:c:\projects\juego\main.cpp
 	<SFML/Graphics.hpp>
 	"MenuPrincipal.h"
 	"DarNombreJugador.h"
 	"Nivel1.h"
+	"Nivel2.h"
+	"Nivel3.h"
+	"Nivel4.h"
+	"Nivel.h"
 	"Jugador.h"
 	"PantallaGameOver.h"
+	"PantallaPasarNivel.h"
+	"PantallaFinal.h"
+	"Archivo.h"
+	"Records.h"
+	"Jugador2.h"
 	<iostream>
 	<string.h>
 
@@ -427,7 +436,7 @@
 1715730266 source:c:\projects\juego\menu.cpp
 	"menu.h"
 
-1720884147 c:\projects\juego\jugador.h
+1721264864 c:\projects\juego\jugador.h
 	<SFML/Graphics.hpp>
 	<string>
 	<cstring>
@@ -435,8 +444,9 @@
 	"Piso.h"
 	"PuertaBlanca.h"
 	"Moneda.h"
+	"Fuego.h"
 
-1720884124 source:c:\projects\juego\jugador.cpp
+1721264901 source:c:\projects\juego\jugador.cpp
 	"Jugador.h"
 	"Obstaculo.h"
 	"PuertaBlanca.h"
@@ -451,14 +461,14 @@
 	<SFML/Graphics.hpp>
 	<string>
 
-1720560709 source:c:\projects\juego\menuprincipal.cpp
+1721256367 source:c:\projects\juego\menuprincipal.cpp
 	"MenuPrincipal.h"
 
-1720544514 c:\projects\juego\menuprincipal.h
+1721256318 c:\projects\juego\menuprincipal.h
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1720886490 source:c:\projects\juego\nivel.cpp
+1721252775 source:c:\projects\juego\nivel.cpp
 	"Nivel.h"
 	"Obstaculo.h"
 	"Moneda.h"
@@ -466,18 +476,19 @@
 	<string.h>
 	<sstream>
 
-1720884333 c:\projects\juego\nivel.h
+1721252775 c:\projects\juego\nivel.h
 	<SFML/Graphics.hpp>
 	"Jugador.h"
 	"Piso.h"
 	"Obstaculo.h"
 	"PuertaBlanca.h"
 	"Moneda.h"
+	"Fuego.h"
 
-1720885990 source:c:\projects\juego\nivel1.cpp
+1721252775 source:c:\projects\juego\nivel1.cpp
 	"Nivel1.h"
 
-1720736088 c:\projects\juego\nivel1.h
+1721252775 c:\projects\juego\nivel1.h
 	<SFML/Graphics.hpp>
 	"Nivel.h"
 	"Jugador.h"
@@ -506,12 +517,12 @@
 	<iostream>
 	<string.h>
 
-1720885776 source:c:\projects\juego\pantallagameover.cpp
+1721252775 source:c:\projects\juego\pantallagameover.cpp
 	"PantallaGameOver.h"
 	<iostream>
 	<string.h>
 
-1720885856 c:\projects\juego\pantallagameover.h
+1721252775 c:\projects\juego\pantallagameover.h
 	<iostream>
 	<SFML/Graphics.hpp>
 
@@ -1108,6 +1119,91 @@
 1721236582 c:\projects\laboratorio2\archivo.h
 	"Jugador.h"
 	<SFML/Graphics.hpp>
+	<string>
+	<cstring>
+
+1721252775 source:c:\projects\juego\fuego.cpp
+	"Fuego.h"
+	<iostream>
+	<string.h>
+
+1721252775 c:\projects\juego\fuego.h
+	<SFML/Graphics.hpp>
+
+1721252775 c:\projects\juego\nivel2.h
+	<SFML/Graphics.hpp>
+	"Nivel.h"
+	"Jugador.h"
+
+1721252775 c:\projects\juego\nivel3.h
+	<SFML/Graphics.hpp>
+	"Nivel.h"
+	"Jugador.h"
+
+1721252775 c:\projects\juego\nivel4.h
+	<SFML/Graphics.hpp>
+	"Nivel.h"
+	"Jugador.h"
+
+1721252775 c:\projects\juego\pantallapasarnivel.h
+	<SFML/Graphics.hpp>
+
+1721252775 c:\projects\juego\pantallafinal.h
+	<SFML/Graphics.hpp>
+
+1721265613 c:\projects\juego\archivo.h
+	"Jugador2.h"
+	<SFML/Graphics.hpp>
+	<string>
+	<cstring>
+
+1721252775 source:c:\projects\juego\nivel2.cpp
+	"Nivel2.h"
+	<iostream>
+	<string.h>
+
+1721252775 source:c:\projects\juego\nivel3.cpp
+	"Nivel3.h"
+	<iostream>
+	<string.h>
+
+1721252775 source:c:\projects\juego\nivel4.cpp
+	"Nivel4.h"
+	<iostream>
+	<string.h>
+
+1721252775 source:c:\projects\juego\pantallafinal.cpp
+	"PantallaFinal.h"
+	<iostream>
+	<string.h>
+
+1721252775 source:c:\projects\juego\pantallapasarnivel.cpp
+	"PantallaPasarNivel.h"
+	<iostream>
+	<string.h>
+
+1721265911 source:c:\projects\juego\records.cpp
+	"Records.h"
+	<iostream>
+	<string.h>
+
+1721265771 source:c:\projects\juego\archivo.cpp
+	"Jugador2.h"
+	"Archivo.h"
+	<SFML/Graphics.hpp>
+	<string>
+	<iostream>
+	<string.h>
+
+1721259550 c:\projects\juego\records.h
+	<SFML/Graphics.hpp>
+	"Archivo.h"
+
+1721264385 source:c:\projects\juego\jugador2.cpp
+	"Jugador2.h"
+	<cstring>
+
+1721264349 c:\projects\juego\jugador2.h
 	<string>
 	<cstring>
 

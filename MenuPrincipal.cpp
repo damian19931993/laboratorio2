@@ -29,16 +29,11 @@ MenuPrincipal::MenuPrincipal(sf::RenderWindow& vent) : ventana(vent), botonJugar
     botonJugar.setPosition(350, 300);
 
     botonRecords.setFont(fuente);
-    botonRecords.setString("* Ver Partidas");
+    botonRecords.setString("* Records");
     botonRecords.setCharacterSize(30);
     botonRecords.setFillColor(sf::Color::White);
     botonRecords.setPosition(350, 350);
 
-    botonContinuarPartida.setFont(fuente);
-    botonContinuarPartida.setString("* Continuar Partida");
-    botonContinuarPartida.setCharacterSize(30);
-    botonContinuarPartida.setFillColor(sf::Color::White);
-    botonContinuarPartida.setPosition(350, 400);
 
 
 }
@@ -57,9 +52,7 @@ void MenuPrincipal::manejarEntrada() {
                 if (botonRecords.getGlobalBounds().contains(ventana.mapPixelToCoords(sf::Mouse::getPosition(ventana)))) {
                     botonRecordsPresionado = true;
                 }
-                 if (botonContinuarPartida.getGlobalBounds().contains(ventana.mapPixelToCoords(sf::Mouse::getPosition(ventana)))) {
-                    botonContinuarPartidaPresionado = true;
-                }
+
 
             }
         }
@@ -74,7 +67,6 @@ void MenuPrincipal::dibujar() {
     ventana.draw(textoBienvenida);
     ventana.draw(botonJugar);
     ventana.draw(botonRecords);
-    ventana.draw(botonContinuarPartida);
     ventana.display();
 }
 
@@ -88,17 +80,10 @@ bool MenuPrincipal::esBotonRecordsPresionado() const {
 }
 
 
-bool MenuPrincipal::esBotonContinuarPartidaPresionado() const {
-
-    return botonContinuarPartidaPresionado;
-
-}
-
 
 
 void MenuPrincipal::resetBotones() {
     botonJugarPresionado = false;
     botonRecordsPresionado = false;
-    botonContinuarPartidaPresionado=false;
 }
 

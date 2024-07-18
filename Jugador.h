@@ -45,8 +45,9 @@ private:
     const float alturaMaxTrampa=200;
     const float velocidadAperturaTrampa = 0.03;
 
-public:
+    public:
     Jugador(float xx, float yy);
+
 
     void setSize(float ancho, float altura);
 
@@ -89,6 +90,7 @@ public:
     void setNivel(int n){
         nivel=n;
     }
+    void setNombre(const std::string& n);
 
 
 

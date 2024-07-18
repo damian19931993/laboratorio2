@@ -4,6 +4,7 @@
 #include<iostream>
 #include <string.h>
 using namespace std;
+
 Jugador::Jugador(float xx, float yy) : x(xx), y(yy), gameOver(false), trampaActiva(false), animacionTrampa(false), alturaActualTrampa(0), puntos(0) {
     vidas=10;
     forma.setRadius(20); // Establecer el radio del círculo
@@ -188,6 +189,11 @@ void Jugador::actualizarTrampa() {
 
 void Jugador::setVidas(int v) {
     vidas = v;
+}
+
+void Jugador::setNombre(const std::string& n) {
+    strncpy(nombre, n.c_str(), sizeof(nombre) - 1);
+    nombre[sizeof(nombre) - 1] = '\0'; // Aseguramos que la cadena está terminada en null
 }
 
 

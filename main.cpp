@@ -11,6 +11,8 @@
 #include "PantallaPasarNivel.h"
 #include "PantallaFinal.h"
 #include "Archivo.h"
+#include "Records.h"
+#include "Jugador2.h"
 #include<iostream>
 #include <string.h>
 using namespace std;
@@ -22,6 +24,8 @@ int main() {
     // Crear el objeto MenuPrincipal
     MenuPrincipal menu(ventana);
     Jugador jugador(0, 400);
+    Jugador2 j2;
+
     DarNombreJugador darNombreJugador(ventana);
     Nivel1 nivel1(ventana,jugador);
     Nivel2 nivel2(ventana,jugador);
@@ -31,9 +35,11 @@ int main() {
     PantallaPasarNivel pantallaPasarNivel(ventana);
     PantallaFinal pantallaFinal(ventana);
     Archivo archivo;
+    Records records(ventana);
 
     bool enMenuPrincipal=true;
     bool enDarNombreJugador=false;
+    bool enRecords=false;
     bool habilitarNivel1=false;
     bool habilitarNivel2=false;
     bool habilitarNivel3=false;
@@ -43,15 +49,26 @@ int main() {
     bool habilitarSiguienteNivel=false;
     bool jugarProximoNivel=false;
     bool hayJuego=true;
+    bool habilitarArchivo=false;
+    bool a=false;
 
 
 
     while (ventana.isOpen()) {
-            cout<<jugador.getVidas();
+            cout<<archivo.contarRegistros();
 
         if(enMenuPrincipal){
             menu.manejarEntrada();
             menu.dibujar();
+        }
+
+        if(menu.esBotonRecordsPresionado()){
+            enMenuPrincipal=false;
+            enRecords=true;
+        }
+        if(enRecords){
+            records.dibujar(archivo);
+            records.manejarEntrada();
         }
 
         if(menu.esBotonJugarPresionado()){
@@ -63,12 +80,14 @@ int main() {
         if(enDarNombreJugador){
             darNombreJugador.manejarEntrada();
             darNombreJugador.dibujar();
+            jugador.setNombre(darNombreJugador.getNombreJugador());
+
 
             if(darNombreJugador.esNombreIngresado()){
                 habilitarNivel1=true;
                 enDarNombreJugador=false;
                 darNombreJugador.resetNombreIngresado();
-                jugador.setVidas(10);
+                jugador.setVidas(1);
                 jugador.setPuntos(0);
 
             }
@@ -151,6 +170,16 @@ int main() {
         }
 
         if(habilitarPantallaFinal){
+            habilitarArchivo=true;
+            j2.setNombre(jugador.getNombre());
+            j2.setPuntos(jugador.getPuntos());
+            cout<<j2.getNombre();
+            cout<<j2.getPuntos();
+            if(habilitarArchivo && !a){
+                archivo.grabarArchivo(j2);
+                a=true;
+            }
+
             pantallaFinal.dibujar();
             pantallaFinal.manejarEntrada();
             if(pantallaFinal.esIrMenu()){
@@ -163,11 +192,22 @@ int main() {
 
         if(jugador.getVidas()==0){
             gameOver=true;
+            habilitarArchivo=true;
         }
 
 
+
+
         if (gameOver){
-            archivo.cargarJugador(jugador);
+            j2.setNombre(jugador.getNombre());
+            j2.setPuntos(jugador.getPuntos());
+            cout<<j2.getNombre();
+            cout<<j2.getPuntos();
+            if(habilitarArchivo && !a){
+                archivo.grabarArchivo(j2);
+                a=true;
+            }
+
             habilitarNivel1 = false;
             habilitarNivel2 = false;
             habilitarNivel3 = false;
@@ -183,6 +223,8 @@ int main() {
                 jugador.setVidas(-1);
                 jugador.setPuntos(0);
                 gameOver=false;
+                habilitarArchivo=false;
+                a=false;
                 pantallaGameOver.resetIrAmenu();
                 int posicionesX1[] = { 200, 350, 450 };
                 int posicionesY1[] = { 400, 400, 400 };

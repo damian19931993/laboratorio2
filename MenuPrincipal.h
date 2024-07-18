@@ -10,7 +10,6 @@ private:
     sf::Text textoBienvenida;
     sf::Text botonJugar;
     sf::Text botonRecords;
-    sf::Text botonContinuarPartida;
     sf::RenderWindow& ventana;
     sf::Texture fondoTexture;
     sf::Sprite fondoSprite;
